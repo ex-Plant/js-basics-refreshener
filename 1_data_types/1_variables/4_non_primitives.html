@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport'
+        content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible'
+        content='ie=edge'>
+  <title>JavaScript kurs</title>
+  <style>
+    div {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <h1>non primitives</h1>
+</div>
+
+<script>
+
+  const OBJECTS = `
+    *OBJECTS* // non-primitive types
+    - object - {}
+    - array - []
+    - nan
+  `
+
+  // 1. * OBJECT *
+
+    const objectLiteral = {
+      property: "value",
+      stringProperty: "string value",
+      numberProperty: 123,
+      cities : ["Kraków", "Wrocław", "Poznan"],
+      capital: {
+        city: "Warsaw",
+        population: 123
+      }
+    }
+    // console.log(objectLiteral);
+    // console.log(objectLiteral.property);
+
+
+ // 2. * ARRAY [] *
+  const ARRAY = `
+    Special object in JS that is capable of holding different data types. We can access certain values using indexes or square brackets notation.
+  `
+
+  let brands = ["sony", "lenovo", "dell", "google", "microsoft"];
+  // console.log(brands[0]); // sony
+  // console.log(brands[1]); // lenovo
+  // console.log(brands[ brands.length - 1 ]); // microsoft
+  // console.log(brands.length); // 5
+
+  // replacing item in the arr
+  brands[3] = "acer";
+  // console.log(brands);
+  // ["sony","lenovo","dell","acer","microsoft"]
+
+  let mixedTypesArr = [1, 2, true, "Asia", { a: 12}];
+
+  let arrObjects = [
+    { name: "Kasia", age: 28, favColor: "red" },
+    { name: "Ola", age: 32, favColor: "green" },
+    { name: "Adam", age: 38, favColor: "white" },
+  ];
+  // console.log(arrObjects);
+
+  const MUTATING_OBJECTS = `
+      Objects are not primitive data types that points to a certain place in memory so we have to be careful when trying to copy them etc.
+     `
+
+  const testArr = [1,2,3,4,5];
+  console.log({ testArr }); // [1,2,3,4,5];
+
+  const myMixedArr = testArr; // this is now pointing to the same object in memory
+  myMixedArr[1] = 'test'
+  console.log({ myMixedArr }); //[1, "test", 2, 3, 4]
+
+  // original object is the same
+  console.log({ testArr }); //[1, "test", 2, 3, 4]
+
+  const newTestArr =  [1,2,3,4,5];
+  // create a copy of an array instead of pointing to the same one
+  const newMixedArr = [...newTestArr];
+  newMixedArr[1] = 'test';
+  console.log(newMixedArr); // [1, 'test', 3, 4, 5]
+  // original arr is not modified
+  console.log(newTestArr); // [1, 2, 3, 4, 5]
+
+
+  // SLICE
+  const mySlicedArr = newTestArr.slice(1,3); // [2, 3]
+  const SLICE_METHOD = `
+    Start from 1 index, end at 3 index, do not include end.
+    Original arr is not modified - returns a shallow copy
+    "kawałek, plaster"
+
+  `
+  console.log({ mySlicedArr });
+  console.log(newTestArr); // not changed
+
+
+  // SPLICE
+  const arrTobBeSpliced = [0, 1, 2, 3, 4, 5]
+  arrTobBeSpliced.splice(1,3);
+  const SPLICE_METHOD = `
+    start from index 1, and delete 3 items
+    ORIGINAL ARR IS MODIFIED
+    "spojenie, splot, złączenie"
+  `
+
+  console.log({ arrTobBeSpliced });// [0, 4, 5]
+
+  const arrTobBeSpliced2 = [0, 1, 2, 3, 4, 5]
+  arrTobBeSpliced2.splice(1,3, "konrad", "teresa", 1, 2, 3, 4)
+
+  const SPLICE_METHOD_WITH_EXTRA_ITEMS = `
+    start from index 1, delete 3 items and add some elements in place of deleted ones
+  `
+  console.log({ arrTobBeSpliced2 }); // [0, 'konrad', 'teresa', 1, 2, 3, 4, 4, 5]
+
+
+// 3. *NaN*
+  const NAN = `It is not a data type it is a special value that tells that something is not a number `
+
+  const testNan = 23
+  const testNan2 = NaN;
+  console.log(isNaN(testNan)) // false
+  console.log(isNaN(testNan2)) // true
+  console.log(typeof testNan ); // number
+  console.log(typeof testNan2 ); // number // yep! ;)
+
+
+</script>
+</body>
+</html>

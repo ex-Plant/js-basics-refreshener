@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport'
+        content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible'
+        content='ie=edge'>
+  <title>Falsy values</title>
+</head>
+<body>
+<script>
+
+  const FALSY_VALUES = `
+  * Falsy values *
+  - false
+  - 0
+  - "" (empty string)
+  - null
+  - undefined
+  - NaN
+  `
+
+  const NOT_FALSY_VALUES = `
+  - [] - empty arr is not falsy
+  - " " - string with space inside is not falsy
+  `
+
+  const NULLISH_COALESCING_OPERATOR = `
+  ?? - checks for null and undefined
+
+  let foo = null ?? 'default'; // 'default'
+  let bar = undefined ?? 'default'; // 'default'
+  let baz = 0 ?? 'default'; // 0
+  let qux = '' ?? 'default'; // ''
+  `
+
+  const LOGICAL_OR_OPERATOR = `
+  || - checks for falsy values, same like if statement or ternary operator
+
+  let foo = null || 'default'; // 'default'
+  let bar = undefined || 'default'; // 'default'
+  let baz = 0 || 'default'; // 'default'
+  let qux = '' || 'default'; // 'default'
+  `
+
+  function testFalsyValues() {
+    if (false) {
+      console.log("This will not be executed");
+    }
+
+    if (0) {
+      console.log("This will not be executed");
+    }
+
+    if ("") {
+      console.log("This will not be executed");
+    }
+
+    if (null) {
+      console.log("This will not be executed");
+    }
+
+    if (undefined) {
+      console.log("This will not be executed");
+    }
+
+    if (NaN) {
+      console.log("This will not be executed");
+    }
+
+    if (1) {
+      console.log("number will be executed");
+    }
+
+    if ("Hello") {
+      console.log("string will be executed");
+    }
+
+    if ([""]) {
+      console.log("[\"\"] will be executed");
+    }
+
+    if ([]) {
+      console.log("[] will  be executed");
+    }
+
+  }
+  console.log(testFalsyValues());
+
+</script>
+
+</body>
+</html>
