@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+</head>
+<body>       
+    
+    <script>
+
+
+        const methods = `
+        - for
+        - for each
+        - map - new array
+        - filter - new array
+        - find - first element
+        - reduce
+        - every - czy wszystkie elmenty tablice spelniaja warunek
+        `
+
+        let tab = ["Ania", "Ola", "Kasia", "Adam", "Karol", "Daniel", "Kasia"];
+
+
+        //1.
+
+
+        for (let i = 0; i < tab.length; i++ ) {
+          const el = tab[i];
+          console.log(el);
+        }
+
+        for (let el of tab) {
+          console.log(el);
+        }
+
+
+        // 2. for each
+      tab.forEach(function (item, index, arr) {
+        console.log(item);
+      });
+
+        //3. map
+
+        let arr = ["Ola", "Ania", "Kasia", "Ola", "Asia", "Zuza"];
+
+        let newArr = arr.map(function (value, index, arr) {
+            return value + "!";
+        });
+
+        console.log(newArr); // ['Ola!', 'Ania!', 'Kasia!', 'Ola!', 'Asia!', 'Zuza!']
+
+        newArr = arr.map( (value) => value + "!" );
+        console.log(newArr); // ['Ola!', 'Ania!', 'Kasia!', 'Ola!', 'Asia!', 'Zuza!']
+
+        newArr = [1,2,3,4,5,6,7,8].map(Math.sqrt);
+        console.log(newArr);
+
+//4. filter
+
+
+        let filtered = arr.filter(function (v) {
+            return v.length >= 4
+        });
+
+        console.log(filtered); // ['Ania', 'Kasia', 'Asia', 'Zuza']
+
+
+        //5. reducer - redukcja tablicy do pojedynczej wartosci
+        // przyjmuje callback w callbacku minimum dwie wartosci - acumulator, czyli wartosc poczatkowa / przechowywana
+
+        const arra = [1,2,3,4,5,6,7,8,9];
+        const reducedA = arra.reduce((acc, currentValue, index, arra) => {
+            return acc + currentValue
+        }, 0 )
+
+        console.log({ reducedA });
+
+        let reduced = [1,2,3,4,5,6,7,8,9].reduce(function (acc, currValue, index, arr) {
+            return acc + currValue;
+        });
+
+        console.log(reduced); // 45
+
+        const arr2 = [1,2,3,4,5];
+        console.log( arr2.every( v => v > 0 ) ); // true
+        console.log( arr2.every( v => v > 3 ) ); // false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+    
+</body>
+</html>

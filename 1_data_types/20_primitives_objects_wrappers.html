@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>   
+        body {
+            background: black;
+            color: white;  
+        }
+
+        * {
+            margin: 20px 2px;
+        }
+        
+    </style>
+</head>
+<body>       
+    
+    <script>
+
+        const primitiveWrappers = `
+        /*
+            Prymitywy jak number czy string mają
+            swoje odpowiedniki w postaci obiektów.
+            Możemy wykorzystać ich konstruktory tzw.
+            wrappery aby mieć możliwość użycia
+            przydatnych metod. Dodatkowo JavaScript
+            robi ten proces automatycznie, gdy wywołamy
+            metodę to prymityw jest konwertowany 
+            na obiekt i po wszystkim wraca do swojej
+            prymitywnej postaci.
+            Czyli de facto mozemy pracowac na prymitywach - wrappery zostana automatycznie owiniete wokol stringa czy number.
+            Nastepuje automatyczna konwersja.
+        */
+        `
+
+        let txt = "TEST"; // string - prymityw
+
+        let str = new String(txt); // String - obiekt / wrapper
+        str = str.toLowerCase();
+        console.log(str); // "test"
+
+        str = txt.toLowerCase();
+        console.log(str); // "test"
+        
+
+        let num = 123.45678;
+        num = num.toFixed(2);
+        console.log(num); // 123.46
+
+        let num2 = new Number(123.45678);
+        num2 = num2.toFixed(2);
+        console.log(num2); // 123.46
+
+
+        
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </script>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+    
+</body>
+</html>

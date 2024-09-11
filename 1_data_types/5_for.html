@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>for loop</title>
+  <style>
+      body {
+          background: black;
+          color: white;
+      }
+
+      * {
+          margin: 20px 2px;
+      }
+
+  </style>
+</head>
+<body>
+
+<script>
+  /*
+   for - pętla
+   */
+
+  for (let i = 0; i < 4; i++) {
+    console.log(i);
+  }
+
+  const arr = [1,2,3,4,5];
+
+  for (let a = 0; a < arr.length; a++) {
+    console.log( arr[a] * 2 );
+  }
+
+  let anotherTest = 3
+  for (anotherTest; anotherTest < 5; anotherTest++) {
+    console.log({ anotherTest });
+  }
+
+
+  for (
+    let anotherTest = 3;
+    anotherTest < 5;
+    anotherTest++
+  ) {
+    console.log({ anotherTest });
+  }
+
+
+
+   const myTable = [-6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6];
+
+  let sum = 0; // result should be the same
+
+  for (let index = 0; index < myTable.length; index++) {
+    sum = sum + myTable[index]
+
+    if (myTable[index] > 0) {
+      console.log(myTable[index] );
+    }
+    if (index === myTable.length - 1) {
+      console.log({ sum });
+    }
+  }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

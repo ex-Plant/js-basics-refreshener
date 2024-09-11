@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+      body {
+          background: black;
+          color: white;
+      }
+
+      * {
+          margin: 20px 2px;
+      }
+
+  </style>
+</head>
+<body>
+
+<script>
+  /*
+   while - pętla ta pozwala na wielokrotne wykonanie bloku
+   kodu jeżeli jeśli dany warunek jest spełniony
+   */
+
+  let i = 0;
+
+  while (i < 4) {
+    console.log(i);
+    i = i + 1;
+  }
+
+  i = 10;
+  while (i < 15) {
+    console.log(i);
+    //i = i + 1;
+    i++; // inkrementacja
+  }
+
+  i = 20;
+  while (i > 15) {
+    console.log(i);
+    //i = i - 1;
+    i--; // dekrementacja
+  }
+
+
+
+  const names = ["Ola", "Kasia", "Adam", "Karol"];
+  let b = 0;
+  while (b < names.length) {
+    console.log( names[b] );
+    b++;
+  }
+
+  const nums = [1, 2, 3, 4, 5];
+  let c = 0;
+  while (c < nums.length) {
+    nums[c] = nums[c] + 10;
+    c++;
+  }
+  console.log(nums);
+
+
+  let d = 10;
+  do {
+    console.log("d:", d);
+    d++;
+  } while (d < 5)
+
+
+let te = 10
+  for (te; te < 15; te++) {
+    console.log(te);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

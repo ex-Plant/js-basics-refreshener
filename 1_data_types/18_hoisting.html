@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>   
+        body {
+            background: black;
+            color: white;  
+        }
+
+        * {
+            margin: 20px 2px;
+        }
+        
+    </style>
+</head>
+<body>       
+    
+    <script>
+        const hoisting = `
+
+        /*
+            Hoisting to przeniesienie wszystkich deklaracji
+            zmiennych na początek funkcji, natomiast przypisania
+            wartości pozostają na swoim miejscu. Dodatkowo
+            funkcje też przenoszone są na początek programu.
+            Co to oznacza ?
+            Np, że mozemy wywolac funkcje przed jej deklaracja.
+            W przypadku var - zmienna ktora zostala przypisana po jej uzyciu nie wywali bledu = bedzie miala automatycznie przypisana wartosc undefined.
+        */
+        `
+
+        function test1() {
+            console.log(a); // undefined
+            var a = 10;
+            console.log(a); // 10
+        }
+
+        function test1InPractise() {
+            var a; // undefined
+            console.log(a); // undefined
+            a = 10;
+            console.log(a); // 10
+        }
+
+        test1();
+
+
+        // function test1() {
+        //     console.log(a); // Cannot access 'a' before initialization 
+        //     let a = 10;
+        //     console.log(a); // 10
+        // }
+
+        // test2();
+
+        test3(); // deklaracje funkcji też ulegają hoistingowi
+
+        function test3() {
+            console.log(a); // undefined
+            var a = 10;
+            console.log(a); // 10
+        }
+
+
+        //console.log(data); // ReferenceError: Cannot access 
+                             // 'data' before initialization
+                             // Jest hoisting ale nie przypisywane
+                             // jest undefined, więc nie możemy
+                             // odwołać się do takich let i const 
+        let data; // undefined
+        console.log(data); // undefined
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </script>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+    
+</body>
+</html>

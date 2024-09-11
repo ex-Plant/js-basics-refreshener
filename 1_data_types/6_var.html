@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+      body {
+          background: black;
+          color: white;
+      }
+
+      * {
+          margin: 20px 2px;
+      }
+
+  </style>
+</head>
+<body>
+
+<script>
+
+  /*
+   Zmienna var
+   Zanim w ES2015/ES6 wprowadzono słowa kluczowe let i const
+   w JavaScript mieliśmy tylko dostępne var do tworzenia
+   zmiennych. Taka zmienna nie ma zasięgu blokowego!
+   Var is not scoped!
+   Co to znaczy?
+   Var zadeklarowany wewnątrz funkcji będzie dostępny poza tą funkcją. Czyli var tworzy zmienne globalne. Var nadpisze też wcześniejszą zmienna var o takiej samej nazwie.
+
+   Problem with var - you can use the same identifier in the same scope more than once - no errors;
+   */
+
+
+  var a = 12;
+  var a = 45;
+
+  let b = 12;
+  //let b = 12; // SyntaxError: Identifier 'b' has already been declared (
+
+
+  /*
+   Zmienna var
+   Zanim w ES2015/ES6 wprowadzono słowa kluczowe let i const
+   w JavaScript mieliśmy tylko dostępne var do tworzenia
+   zmiennych. Taka zmienna nie ma zasięgo blokowego!
+   */
+
+  var aa = 10;
+
+  if (true) {
+    var aa = 23; // nadpisanie globalnej deklaracji zmiennej a
+    console.log(aa); // 23
+
+    var bb = 100;
+  }
+
+  console.log(aa); // 23
+  console.log(bb); // 100
+
+
+
+  // with var we are effectively creating a global scope as we are in the window obj now and var has a function scope
+  var b = 10;
+  console.log(window.b); // 10
+  console.log(b); // 10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

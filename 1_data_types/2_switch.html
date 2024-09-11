@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport'
+        content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible'
+        content='ie=edge'>
+  <title>JavaScript kurs</title>
+  <style>
+    div {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <h1>switch </h1>
+</div>
+
+<script>
+
+  const switchInstruction = `
+   switch - pozwala na proste porównanie czy dana zmienna posiada jedną
+   z wartości. Gdy dany case jest spełniony następuje wyjście
+   z konstrukcji switch.
+   `
+
+  let myNum = 55;
+
+  switch (myNum) {
+    case 5:
+      console.log("num jest równe 5");
+      break;
+    case 12:
+      console.log("num jest równe 12");
+      break;
+    case 18:
+      console.log("num jest równe 18");
+      break;
+    case 22:
+      console.log("num jest równe 22");
+      break;
+    case 26:
+      console.log("num jest równe 26");
+      break;
+    default:
+      console.log("Domyślny kod");
+  }
+
+  let switchTxt = "Kasia";
+  switch (switchTxt) {
+    case "Ola":
+      console.log("txt jest równe Ola");
+      break;
+    case "Asia":
+      console.log("txt jest równe Asia");
+      break;
+    case "Kasia":
+      console.log("txt jest równe Kasia");
+      break;
+    default:
+      console.log("Domyślny kod");
+  }
+
+  let n = 2;
+  switch (n) {
+    case 0:
+    case 2:
+    case 4:
+    case 6:
+    case 8:
+    case 10:
+      console.log(n, "jest parzyste");
+      break;
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 9:
+    case 11:
+      console.log(n, "jest nie parzyste");
+      break;
+    default:
+      console.log(n, "spoza testowanego przedziału") ;
+  }
+
+
+  const temp = 22;
+  switch (temp) {
+    case 22:
+    case 23:
+    case 24:
+      console.log(`cieplo`);
+      break;
+    case 18:
+    case 19:
+    case 20:
+    case 21:
+      console.log(`zimno`);
+      break;
+    default:
+      console.log(`brak danych`)
+  }
+
+
+
+</script>
+</body>
+</html>
