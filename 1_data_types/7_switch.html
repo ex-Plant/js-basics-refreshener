@@ -14,54 +14,51 @@
   </style>
 </head>
 <body>
-<div>
-  <h1>switch </h1>
-</div>
 
 <script>
 
-  const switchInstruction = `
-   switch - pozwala na proste porównanie czy dana zmienna posiada jedną
-   z wartości. Gdy dany case jest spełniony następuje wyjście
-   z konstrukcji switch.
-   `
+  const switchInstruction =
+          ` allows for simple check if a certain variable has some value. if it so switch is finished `
 
   let myNum = 55;
 
   switch (myNum) {
     case 5:
-      console.log("num jest równe 5");
+      console.log("num === 5");
       break;
     case 12:
-      console.log("num jest równe 12");
+      console.log("num === 12");
       break;
     case 18:
-      console.log("num jest równe 18");
+      console.log("num === 18");
       break;
     case 22:
-      console.log("num jest równe 22");
+      console.log("num === 22");
       break;
     case 26:
-      console.log("num jest równe 26");
+      console.log("num === 26");
       break;
     default:
-      console.log("Domyślny kod");
+      console.log("default code");
   }
+  // default code
+
 
   let switchTxt = "Kasia";
   switch (switchTxt) {
     case "Ola":
-      console.log("txt jest równe Ola");
+      console.log("txt === Ola");
       break;
     case "Asia":
-      console.log("txt jest równe Asia");
+      console.log("txt === Asia");
       break;
     case "Kasia":
-      console.log("txt jest równe Kasia");
+      console.log("txt === Kasia");
       break;
     default:
-      console.log("Domyślny kod");
+      console.log("default");
   }
+  // txt === Kasia
 
   let n = 2;
   switch (n) {
@@ -71,7 +68,7 @@
     case 6:
     case 8:
     case 10:
-      console.log(n, "jest parzyste");
+      console.log(n, " is even");
       break;
     case 1:
     case 3:
@@ -79,11 +76,12 @@
     case 7:
     case 9:
     case 11:
-      console.log(n, "jest nie parzyste");
+      console.log(n, " is odd");
       break;
     default:
-      console.log(n, "spoza testowanego przedziału") ;
+      console.log(n, " beyond the scope") ;
   }
+  // 2 is even
 
 
   const temp = 22;
@@ -91,17 +89,37 @@
     case 22:
     case 23:
     case 24:
-      console.log(`cieplo`);
+      console.log(`warm`);
       break;
     case 18:
     case 19:
     case 20:
     case 21:
-      console.log(`zimno`);
+      console.log(`cold`);
       break;
     default:
-      console.log(`brak danych`)
+      console.log(`missing data`)
   }
+  // warm
+
+
+  const anotherSwitchTest = 1
+
+  switch (anotherSwitchTest) {
+    case 1:
+      console.log(`1 it is`);
+      break;
+
+    case 2 < anotherSwitchTest:
+      console.log(`2 it is `);
+      break
+    default:
+      console.log(`default `)
+  }
+
+  // 1 it is
+
+
 
 
 
