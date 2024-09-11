@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strings</title>
+</head>
+<body>
+    <script>
+
+        let str = "Hello World!";
+        console.log(str); // Hello World!
+
+        str = str.toUpperCase();
+        console.log(str); // HELLO WORLD!
+
+        str = str.toLowerCase();
+        console.log(str); // hello world!
+
+        console.log(str.charAt(0)); // h
+
+        // SPLIT - RETURNS AN ARRAY
+        str = "a b c d e f g";
+        console.log(str.split(" ", 2)); // ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+
+
+        const data = "1 1 2 3 4".split(" ");
+        console.log(data); // ['1', '1', '2', '3', '4']
+
+        // JOIN IS AN ARRAY METHOD
+        let result = data.join("|");
+        console.log(result); // 1|1|2|3|4
+
+
+        str = "A B C S D EF G D D D F G ";
+        str = str.replace("D", "test"); // first found D will be replaced
+        console.log(str); // A B C S test EF G D D D F G
+
+        str = str.replace(/D/g, "TEST"); // all D will be replaced
+        console.log(str); // A B C S test EF G TEST TEST TEST F G
+
+const test = 'konrada'
+        const nofirstA = test.replace("a", "")
+        console.log(nofirstA); // konrda
+        const test2 = 'konrada'
+        const noA = test2.replace(/a/g, "")
+        console.log(noA); // konrd
+
+        str = "0123456789";
+        // pobieranie fragmentów łańcucha, substring(odkąd, dokąd -1)
+        console.log( str.substring(2) ); // 23456789
+        console.log( str.substring(3, 6) ); // 2345
+
+
+        str = "Kasia ma kota, Kasia ma też psa";
+        console.log(str.indexOf("Kasia")); // 0
+        console.log(str.indexOf("Kasia", 2)); // 15
+        console.log(str.lastIndexOf("Kasia")); //  15
+        console.log(str.lastIndexOf("Karolina")); //  -1
+
+        let str2 = str.substring(str.lastIndexOf("Kasia")); // everything after last kasia
+        console.log(str2); // Kasia ma też psa
+
+    
+    </script>
+
+</body>
+</html>

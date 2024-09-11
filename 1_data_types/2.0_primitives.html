@@ -31,7 +31,6 @@
     txt = null; // null
     let uniqueSymbol = Symbol(); // symbol
 
-
   `
 
 
@@ -86,6 +85,72 @@
     introduced in ECMAScript 6
     const sym = Symbol();
   `
+
+
+  const primitiveObjectsWrappers = `
+  Primitives like numbers or strings have their counterparts in the form of objects.
+  We can use their constructors, known as wrappers, to access useful methods.
+  Additionally, JavaScript performs this process automatically;
+  when we call a method on a primitive, it is converted to an object, and after the operation, it reverts to its primitive form.
+
+  This means that, in effect, we can work with primitives—wrappers are automatically wrapped around a string or number.
+  Automatic conversion takes place.
+        `
+
+  let txt = "TEST"; // string - primite
+
+  let str = new String(txt); // String - obiekt / wrapper
+  str = str.toLowerCase();
+  console.log(str); // "test"
+
+  str = txt.toLowerCase();
+  console.log(str); // "test"
+
+
+  let num = 123.45678;
+  num = num.toFixed(2);
+  console.log(num); // 123.46
+
+  let num2 = new Number(123.45678);
+  num2 = num2.toFixed(2);
+  console.log(num2); // 123.46
+
+
+  const mutability = `
+  In JavaScript, only objects and arrays truly overwrite their value, meaning they are mutable.
+  However, when primitives are changed, the previous value is effectively deleted and a new one is assigned.
+  This means the variable/constant name points to a new memory location for primitives.
+        `
+
+  // this will not work
+  let str = "Hello World!";
+  str[0] = "R";
+  console.log(str[0]); // H
+
+  // this will work we are creating a new place in memory
+  str = "R" + str.substring(1)
+  console.log(str);
+
+
+  str = str + "!!!";
+  console.log(str); // Hello World!!!!
+
+
+  // this will work - array is mutable
+  const arr = ["H", "e", "l", "l", "o"];
+  arr[0] = "R";
+  console.log(arr); // ['R', 'e', 'l', 'l', 'o']
+
+
+
+
+
+
+
+
+
+
+
 
 </script>
 </body>

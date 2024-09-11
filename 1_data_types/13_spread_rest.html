@@ -11,14 +11,18 @@
 <body>
 <script>
 
-  const restOperator = `
-        /*
-            Operator rest zbiera wszystkie przekazane argumenty
-            do funkcji w tablicę np.
-            function foo(...params) { }
-        */
+  const sumarry = `
+  Spread (...): Expands an iterable into individual elements.
+  Rest (...): Collects multiple elements into a single array.`
 
-       `
+
+  const restOperator = `
+  Takes all arguments passed to a foo into an array
+  function foo(...params) { }
+
+  The rest syntax collects multiple elements and condenses them into a single array.
+  It is typically used in function parameter definitions to handle variable numbers of arguments.`
+
   function foo(name, ...params) {
     console.log(params);
     console.log(name);
@@ -26,13 +30,26 @@
 
   foo('konrad', 1,2,3,4,5,6,7,8, ); // [1, 2, 3, 4, 5, 6, 7, 8]
 
+  function reduceSum(...args) {
+    return args.reduce((a, b) => a + b)
+  }
+
+  console.log(reduceSum(1, 2, 3, 4)); // 10
+
 
   const spreadOperator = `
-        /*
-            Spread operator z EcmaScript2015 rozbija
-            tablicę/obiekt na pojedyńcze wartości
-        */
-        `
+  The spread syntax allows an iterable (like an array or a string) to be expanded in places where zero or more arguments or elements are expected. `
+
+  const myString = 'konrad'
+  const test = [...myString];
+  console.log({ test }); // ["k","o","n","r","a","d"]
+
+  function sum(a, b, c) {
+    return a + b + c;
+  }
+
+  const numbers = [1, 2, 3];
+  console.log(sum(...numbers)); // Output: 6
 
 
   function testSpread(a, b, c, d) {
