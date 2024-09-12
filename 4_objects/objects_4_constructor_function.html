@@ -25,7 +25,6 @@
         // console.log(date);
 
 
-
         // funkcja konstruująca
         function Car(brand, name, color) {
             this.brand = brand;
@@ -106,6 +105,16 @@
         magazine.addAdvert("Console", 10);
         magazine.printAdverts();
 
+
+        function TestConstructorArrow(title) {
+            this.title = title;
+            this.showTitle = () => {
+                console.log(this.title);
+            }
+        }
+
+        const test = new TestConstructorArrow(`times`)
+        test.showTitle()
 
 
 

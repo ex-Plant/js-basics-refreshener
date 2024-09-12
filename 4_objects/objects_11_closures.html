@@ -7,9 +7,7 @@
     <title>Document</title>
 </head>
 <body> 
-
-    <script> 
-
+    <script>
 
         const closure = `tworzenie osobnego srodowiska wewnatrz funkcji `
         /*
@@ -28,9 +26,7 @@
 
         foo(); // b: 5
 
-
-
-        /* 
+        /*
             Funkcja foo ma swoje własne środowisko z zmienną b, 
             która jest oddzielona od globalnej przestrzeni nazw, 
             nazwa zmiennej się pokrywa więc wybrana zostanie lokalna 
@@ -53,11 +49,11 @@
             return test;
         }
 
-        let show = bar();
-        console.log(show); // function
+        let testBar = bar();
+        console.log(testBar); // function
 
         // ciagle mamy dostep do e - funkcje pamietaja swoje srodowisko w ktorym zostala zadeklarowana
-        show(); // d:99 e:12 num:45
+        testBar(); // d:99 e:12 num:45
 
 
 
@@ -76,11 +72,10 @@
 
         let show = test(12);
 
-        // 12 bylo przekazane wczesniej
-        show(5); // 12 5
-        show(6); // 12 6
-        show(7); // 12 7
-        show(8); // 12 8
+        // show(5); // 12 5
+        // show(6); // 12 6
+        // show(7); // 12 7
+        // show(8); // 12 8
 
 
 
@@ -109,7 +104,7 @@
         }
 
         const obj = test();
-        console.log(obj);
+        console.log({ obj });
 
         obj.show();
         obj.setData(67);
@@ -142,45 +137,7 @@
         // 2
         // 3
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </script>
 
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-    
 </body>
 </html>

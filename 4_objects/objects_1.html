@@ -4,28 +4,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>functions</title>
-  <style>
-      body {
-          background: black;
-          color: white;
-      }
+  <title>objects</title>
 
-      * {
-          margin: 20px 2px;
-      }
-
-  </style>
 </head>
 <body>
 <script>
 
   const objects = `
-  THIS nie działa tak samo w funkcjach strzałkowych!
-  W tradycyjnej funkcji zadeklarowanej przy pomocy słowa function this zachowuje się dziwnie
-  - często this będzie się odnosic np, do window.
-  Funkcja strzalkowa rozwiazuje ten problem - this ma scope zalezny od tego gdzie funkcja zostala zadeklarowana.
-
   Metody to wewnętrzne funkcje obiektu, które zwykle operują na danych tego obiektu.
   Metoda odwołuje się do danych swojego obiektu za pomocą this.nazwaZmiennej
   `
@@ -44,14 +29,11 @@ const myObj = {
     }
   }
 }
-  // console.log(this); // window
+  console.log(this); // window
 
 const myObjNew = myObj.createObj(`antonik`)
-// console.log({ myObjNew });
+console.log({ myObjNew });
 
-
-
-  const usingThisInObjects = ``;
 
 
   let phone = {
@@ -66,9 +48,8 @@ const myObjNew = myObj.createObj(`antonik`)
     }
   };
 
-  phone.connect("Kasia");
-  phone.getInfo();
-
+  phone.connect("Kasia"); // Połączenie z: Kasia
+  phone.getInfo(); // Sony Xperia 2023
 
 
 const school = {
@@ -90,6 +71,7 @@ const school = {
     }
 
   },
+
   showStudentsByName: function (name) {
     let myArr = this.students.filter(student => student.name === name)
     for (let i =0; myArr.length < i; i++) {
@@ -111,9 +93,6 @@ school.addStudent("konrad", "antonik");
 school.resetStudents()
 school.getNumStudents();
 school.showStudents();
-
-
-
 
 
   const tvFactory = {

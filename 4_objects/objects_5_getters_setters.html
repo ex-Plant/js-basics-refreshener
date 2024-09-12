@@ -4,18 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>   
-        body {
-            background: black;
-            color: white;  
-        }
+    <title>getters setters</title>
 
-        * {
-            margin: 20px 2px;
-        }
-        
-    </style>
 </head> 
 <body>       
     
@@ -30,7 +20,6 @@
 
         const user = {
             _name: null,
-
             set name(newValue) {
                 // setter
                 if (newValue.length > 2) {
@@ -45,11 +34,10 @@
             }
         };
 
-        // user.name = "Asia";
-        // console.log(user.name);
-        // user.name = "A";
-        // console.log(user.name);
-
+        user.name = "Asia";
+        console.log(user.name);
+        user.name = "A";
+        console.log(user.name);
 
 
 
@@ -70,8 +58,8 @@
         }
 
 
-        // movieExample.title = 22
-        // movieExample.title
+        movieExample.title = 22
+        movieExample.title
 
 
 
