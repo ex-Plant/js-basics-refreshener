@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport'
+        content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible'
+        content='ie=edge'>
+  <title>ARRAYS POP</title>
+</head>
+<body>
+<script>
+  const [num, name, obj] = [12, "Ania", {b:6}];
+  console.log(num);
+  console.log(name);
+  console.log(obj);
+
+  const {username, age, city = "KRK"} = { username: "Ola", age: 30 };
+  console.log(username); // Ola
+  console.log(age); // 30
+  console.log(city); // KRK
+
+
+  const [a, b, c, d = 10] = [1,2,3];
+  console.log(d); // 10
+
+  const [f, ,h] = [9, 10, 11];
+  console.log(f); // 9
+  console.log(h); // 11
+
+  function getUserData() {
+    const userCity = "Wawa";
+    const street = "Wilcza";
+
+    // zapis skrócony
+    return {
+      userCity,
+      street
+    };
+  }
+
+  const userData1 = getUserData();
+  console.log(userData1); // {userCity: 'Wawa', street: 'Wilcza'}
+
+  const {userCity, street} = getUserData();
+  console.log(userCity, street); // Wawa Wilcza
+
+
+  const userDetails = {
+    name: "Karol",
+    age: 30,
+    city: "Gdańsk"
+  };
+
+  function printUser({city, name}) {
+    console.log(city, name); // Gdańsk Karol
+  }
+
+  printUser(userDetails);
+
+
+
+  const employee = {
+    name: "Ola",
+    id: 34,
+    employment: {
+      company: "example.com",
+      address: {
+        country: "Poland",
+        //street: "Polna"
+      }
+    }
+  };
+
+
+
+  const {id, employment:{company} } = employee; // id, company
+  console.log(id, company); // 34 'example.com'
+
+  const { employment: {address: {country}} } = employee;
+  console.log(country); // Poland
+
+  const { employment: {address: {street: companyStreet = "Al.Ujazdowskie"}} } = employee;
+  console.log(companyStreet); // Al.Ujazdowskie
+</script>
+
+</body>
+</html>

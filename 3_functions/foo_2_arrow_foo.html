@@ -24,9 +24,7 @@
 
   console.log(substract(20, 4)); // 16
 
-  const arrowFoo = `
-  It has no arguments object, but we can still access them using rest operator
-  `
+  const arrowFoo = `It has no arguments object, but we can still access them using rest operator`
 
   // let show = () => console.log(arguments);
   // show(1,2,3,4,5); // ReferenceError: arguments is not defined
@@ -53,6 +51,38 @@
       info: "Another object"}
   );
   console.log(getObj2(obj)); // {a: 1, b: 2, info: 'Another object'}
+
+
+
+  const THIS_IN_ARROW_FOO = `
+   The biggest advantage of arrow foo is that this is always pointing to the context where the function was written.
+  `
+
+  let objTest = {
+    data: "Hello",
+    foo: function() {
+      setTimeout(() => {
+        console.log(this);
+      },100)
+    }
+  }
+
+  objTest.foo() // {data: "Hello}
+
+  let objTest2 = {
+    data: "Hello",
+    foo: function() {
+      setTimeout(function() {
+        console.log(this);
+      },100)
+    }
+  }
+
+  objTest2.foo() // Window
+
+
+
+
 
 
 
