@@ -6,38 +6,27 @@
         content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
   <meta http-equiv='X-UA-Compatible'
         content='ie=edge'>
-  <title>IIFE</title>
+  <title>arrow foo</title>
 </head>
 <body>
 <script>
 
-  /*
-   Funkcja strzałkowa czyli arrow function to skrócony
-   zapis funkcji dodany od wersji EcmaScript2015/ES6 JavaScriptu
-   */
 
-  function test(a, b) {
-    return a * b;
-  }
 
   const multiply = (a, b) => a * b;
 
-  console.log(test(3, 10)); // 30
   console.log(multiply(3, 10)); // 30
 
   // => fat arrow
   const substract = (a, b) => {
-    // kod...
     return a - b;
   }
 
   console.log(substract(20, 4)); // 16
 
-  /*
-   Funkcja strzałkowa nie ma dostępu do obiektu arguments,
-   ale możemy użyć operator rest do pobrania wszystkich
-   przekazanych argumentów
-   */
+  const arrowFoo = `
+  It has no arguments object, but we can still access them using rest operator
+  `
 
   // let show = () => console.log(arguments);
   // show(1,2,3,4,5); // ReferenceError: arguments is not defined
@@ -56,19 +45,14 @@
     a: 1,
     b: 2
   };
-  console.log( getObj(obj) );
+  console.log( getObj(obj) ); // {a: 1, b: 2, info: 'Some object'}
 
 
   let getObj2 = (data) => ({
       ...data,
       info: "Another object"}
   );
-  console.log(getObj2(obj));
-
-
-
-
-
+  console.log(getObj2(obj)); // {a: 1, b: 2, info: 'Another object'}
 
 
 

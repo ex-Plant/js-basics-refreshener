@@ -11,36 +11,22 @@
 <body>
 <script>
 
-  const IIFE = `
+  // IIFE - Immediately Invoked Function expression
+  //  Anonymous!
+  //  It used to be leveraged as a way to escape problems with vars and scoping as it is always scoped`
 
-  /*
-   IIFE - Immediately Invoked Function expression to funkcja
-   natychmiastowa, również anonimowa. Ogranicza dostęp
-   do zmiennych i funkcji tylko do niej, czyli nie zaśmieca globalnymi danymi naszego programu.
-   Pierwotnie była uzywana np. jako rozwiazanie problemy zmiennych var i braku scope w ich przypadku - zmienna zadeklarowana w taki sposob
-   byla zawsze scoped.
-   */
-`
 
-  if (true) {
-    var a = 5;
-  }
+  (function() {
+      console.log(`konrad`);
+    }
+  )();
 
-//brak scope - mamy ciągle dostęp do zmiennej var a
-  console.log(a); // 5
 
-  // IIFE
   (function (data) {
     console.log(data);
     var b = 10;
     console.log("b:", b);
   })("test");
-
-  // tutaj przyklad porządanego zachowania - brak dostepu do zmiennej b
-  console.log("Dostęp do b:", b); // ReferenceError: b is not defined
-
-
-
 
 
 
