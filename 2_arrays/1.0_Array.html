@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+</head>
+<body>       
+
+<script>
+        const mutableMethods = `
+        - pop
+        - reverse
+        - push
+        - sort
+        - shift
+        - unshift
+        - splice
+        `
+        const nonMutableMethods = `
+        - slice
+        - toReversed
+        - concat
+        - join / returns a string
+        - for each
+        - indexOf
+        - lastIndexOf
+        - includes
+        - toSorted()
+        `
+
+      //1. Creating an array
+      let arr = [1, 2, 3, 4, 5];
+      let newArray = new Array(1, 2, 3, 4, 5, {a: 12}, [], "dsfsdf" );
+      console.log(newArray );
+
+
+        //   cretate empty array with 7 empty places
+        let tab = new Array(7);
+        console.log(tab); //  [empty × 7]
+
+        // populate with 7 numbers
+        tab = new Array(5).fill(7);
+        console.log(tab); // [7, 7, 7, 7, 7]
+
+
+
+      //2. nested arr
+      const nestedArr = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+      ];
+
+      console.log(nestedArr);
+
+      //3. objects in 2.arrays
+      const arrWithObjects = [
+        { name: "Kasia", favColor: "red" },
+        { name: "Asia", favColor: "red" },
+        { name: "Adam", favColor: "green" },
+      ];
+
+        arrWithObjects[0] = { name: "Karolina", favColor:"orange" };
+
+      console.log(arrWithObjects);
+      console.log(arrWithObjects.length); // 3
+      console.log(arrWithObjects[ arrWithObjects.length - 1 ]); // last element
+
+
+    </script>
+
+</body>
+</html>
