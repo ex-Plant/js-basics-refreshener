@@ -11,34 +11,6 @@
 <body>
 <script>
 
-class TestAnimalForKonrad {
-  constructor(name) {
-    this.name = name;
-    if (TestAnimalForKonrad.count === undefined) {
-      TestAnimalForKonrad.count = 0;
-    }
-    this.id = TestAnimalForKonrad.count;
-    TestAnimalForKonrad.count++;
-    this._type = `animal`
-  }
-
-  set type(val) {
-    this._type = val
-  }
-
-  get type() {
-    return this._type
-  }
-}
-
-const konradsAnimal = new TestAnimalForKonrad(`palski`);
-console.log(konradsAnimal.name);
-console.log(konradsAnimal.type);
-konradsAnimal.type = `Dino`
-console.log(konradsAnimal.type);
-
-
-
 
   class Animal {
     constructor(name) {
@@ -84,7 +56,39 @@ console.log(konradsAnimal.type);
 
 
 
-// class KonradHuman extends Animal {
+  // #####################  tests
+
+
+  class TestAnimalForKonrad {
+    constructor(name) {
+      this.name = name;
+      if (TestAnimalForKonrad.count === undefined) {
+        TestAnimalForKonrad.count = 0;
+      }
+      this.id = TestAnimalForKonrad.count;
+      TestAnimalForKonrad.count++;
+      this._type = `animal`
+    }
+
+    set type(val) {
+      this._type = val
+    }
+
+    get type() {
+      return this._type
+    }
+  }
+
+  const konradsAnimal = new TestAnimalForKonrad(`palski`);
+  console.log(konradsAnimal.name);
+  console.log(konradsAnimal.type);
+  konradsAnimal.type = `Dino`
+  console.log(konradsAnimal.type);
+
+
+
+
+  // class KonradHuman extends Animal {
 //   constructor(name) {
 //     super(name);
 //   }

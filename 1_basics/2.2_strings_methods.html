@@ -40,7 +40,7 @@
         str = str.replace(/D/g, "TEST"); // all D will be replaced
         console.log(str); // A B C S test EF G TEST TEST TEST F G
 
-const test = 'konrada'
+        const test = 'konrada'
         const nofirstA = test.replace("a", "")
         console.log(nofirstA); // konrda
         const test2 = 'konrada'
@@ -62,7 +62,52 @@ const test = 'konrada'
         let str2 = str.substring(str.lastIndexOf("Kasia")); // everything after last kasia
         console.log(str2); // Kasia ma też psa
 
-    
+        const user = { name: "ania", city: "Wawa" };
+
+
+
+        const text = "Hello world!";
+        console.log( text.includes("world") ); // true
+        console.log( text.startsWith("Hello") ); // true
+        console.log( text.startsWith("ello") ); // false
+        console.log( text.startsWith("ello", 1) ); // true
+        console.log( text.endsWith("world!") ); // true
+        console.log( text.endsWith("Hello", 5) ); // true, drugi param
+                                                  // ile znaków sprawdzić
+                                                  // od początku
+
+
+
+        const txt = `
+            Hello ${user.name} from ${user.city}.
+            ${2+2}
+        `;
+
+        console.log(txt);
+
+        function uppercase(strings, ...values) {
+            console.log(strings);
+            console.log(values);
+
+            let result = "";
+            for (let i = 0; i < strings.length; i++) {
+                result += strings[i];
+                if (i < values.length) {
+                    let v = values[i];
+                    if (typeof v === "string") v = v.toUpperCase();
+                    result += v;
+                }
+            }
+
+            return result;
+        }
+
+        const txt2 = uppercase`
+            Hello ${user.name} from ${user.city}.
+            ${2+2}
+        `;
+        console.log({ txt2 });
+
     </script>
 
 </body>

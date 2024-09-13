@@ -14,6 +14,7 @@
   const MAP = `
 
 In JavaScript, both Maps and normal objects (i.e., plain JavaScript objects) can be used to store key-value pairs. However, there are several differences and advantages to using Maps over normal objects:
+Suppose you want to use objects as keys to store metadata about those objects. With a plain object, the keys must be strings, but with a Map, you can use any value (including objects) as keys
 
 Key Types:
 Objects: Keys are typically strings or symbols. Non-string keys are coerced to strings.
@@ -58,7 +59,9 @@ for (let [key, value] of map.entries()) {
   console.log(key, value); // Output: key value, { id: 1 } objectValue, 1 numberKey, anotherKey anotherValue
 }
 In summary, while normal objects are suitable for many use cases, Maps provide more flexibility and performance advantages when working with key-value pairs, especially when keys are not strings or when you need to maintain the order of insertion.
-
+Order of Entries: Map maintains the insertion order of entries.
+Size Property: Map has a size property to easily get the number of entries.
+Iteration: Map provides better iteration methods with map.keys(), map.values(), and map.entries().
 
   `
 

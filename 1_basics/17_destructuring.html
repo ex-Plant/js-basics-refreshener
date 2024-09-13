@@ -82,6 +82,49 @@
 
   const { employment: {address: {street: companyStreet = "Al.Ujazdowskie"}} } = employee;
   console.log(companyStreet); // Al.Ujazdowskie
+
+
+  function test1(v) {
+    if (typeof v === "undefined") v = 23;
+    console.log(v);
+  }
+
+  test1(); // 23
+
+  function test2(a, b = 44, c = {test: "text"}) {
+    console.log(a, b, c);
+  }
+  test2(10); // 10 44 {test: 'text'}
+  test2(5, 77); // 5 77 {test: 'text'}
+
+  // domyślne parametry i destrukturyzacja
+  function test3([a = 1, b = 2] = []) {
+    console.log(a, b);
+  }
+  test3(); // 1, 2
+  test3([]); // 1, 2
+  test3([10, 99]); // 10, 99
+
+  // tablica [500, 1000] użyta domyślnie gdy nic nie przekazane do test4()
+  function test4([a = 1, b = 2] = [500, 1000]) {
+    console.log(a, b);
+  }
+  test4(); // 500, 1000
+
+  function test5([a = 1, b = 2] = [500]) {
+    console.log(a, b);
+  }
+  test5(); // 500, 2
+
+
+  function test6({ b = 2, a = 1 } = {}) {
+    console.log(a, b);
+  }
+
+  test6({a: 10, b: 20, c: 30}); // 10, 20
+  test6({a: 10}); // 10, 2
+  test6(); // 1, 2
+
 </script>
 
 </body>
