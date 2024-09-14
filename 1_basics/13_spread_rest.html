@@ -104,6 +104,17 @@
   const laptop = createLaptop(pc)
   console.log(laptop);
 
+  const testObj = {
+    name : `test`,
+    surname: `surname`,
+    age: 23,
+  }
+
+  // rest operator with destructuring
+  const {name, ...rest} = testObj
+  console.log(rest); // {surname: 'surname', age: 23}
+
+  console.log(name); // test
 
 
 

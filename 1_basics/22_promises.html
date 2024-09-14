@@ -27,7 +27,8 @@
   fetch(apiUrl)
     .then(response => response.json())
     .then(data => processData(data))
-    .catch(err => error(err));
+    .catch(err => error(err))
+    .finally(() => console.log(`done!`))
 
 
 
