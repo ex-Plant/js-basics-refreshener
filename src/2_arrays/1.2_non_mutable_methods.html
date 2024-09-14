@@ -23,6 +23,8 @@
         - findIndex
         - every
         - some
+        - flat
+        - flatMap
         `
 
 
@@ -85,9 +87,11 @@
   "kawałek, plaster"
   `
 
+
   //9. findIndex
   const FIND_INDEX = `similar to indexOf but takes a callback as an argument instead of a value.`
 
+  const arr = [2,3,4,5,6,7,8];
 
   const foundIndex = arr.findIndex( el => el > 4);
   console.log(foundIndex); // 4 indeks
@@ -104,6 +108,44 @@
   const SOME = `returns true if any of arr elements satisfies the condition`
   const atLeastOne = numbers.some( el => el > 17 );
   console.log(atLeastOne); // false
+
+
+  //12. flat
+
+  const FLAT = `
+  flattens a nexted array, we can pass how deep the flattening should go
+  `
+
+  const arr1 = [1,2, 3, 4, 5, [`x`, `y`, `z`]]
+  console.log({ arr1 });
+  const flatTest1 = arr1.flat()
+  console.log(flatTest1); //  [1, 2, 3, 4, 5, 'x', 'y', 'z']
+  console.log(arr1); // not mutated
+
+  const arr2 = [1,2, 3, 4, 5, [`x`, `y`, `z`, [1, 2, 3]]]
+  const flatTest2 = arr2.flat()
+  console.log(flatTest2); // [1, 2, 3, 4, 5, 'x', 'y', 'z', Array(3)]
+
+  // we need to go deeper
+  const flatTest3 = arr2.flat(2)
+  console.log(flatTest3); // [1, 2, 3, 4, 5, 'x', 'y', 'z', 1, 2, 3]
+
+  //13. flatMap
+
+  const FLATMAP = `
+  works only to one level of nesting
+  faster than doing arr.map.flat
+
+  `
+  const flatTestArr = [1, 2, 3,]
+  const normalMap = flatTestArr.map(el => [el, el * 2])
+  console.log(normalMap); // [ARRAY(2), ARRAY(2), ARRAY(2)]
+  console.log(normalMap.flat()) // [1, 2, 2, 4, 3, 6]
+
+  const flatMap = flatTestArr.flatMap(el => [el, el * 2])
+  console.log(flatMap); // [1, 2, 2, 4, 3, 6]
+
+
 
 
 
