@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport'
+        content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible'
+        content='ie=edge'>
+  <title>BookList</title>
+</head>
+<body>
+
+<script>
+window.onload = function() {
+  console.log(`app started!`);
+  bookList.init();
+}
+
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+    this.id = Date.now();
+  }
+}
+
+class BookList {
+  constructor() {
+    this.books = []
+  }
+  init = () => {}
+}
+
+class Storage {
+  constructor() {
+
+  }
+  saveBooks = (books) => {
+    localStorage.setItem(`books`, JSON.stringify(books))
+  }
+
+  getBooks = () => {
+    const books = localStorage.getItem(`books`)
+    if (!books) return []
+    return JSON.parse(books) ?? []
+
+  }
+}
+
+
+class Ui {
+
+}
+
+
+const ui = new Ui();
+
+const bookList = new BookList();
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
