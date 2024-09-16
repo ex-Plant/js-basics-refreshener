@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport'
+        content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible'
+        content='ie=edge'>
+  <title>PROTOTYPE CHAIN</title>
+</head>
+<body>
+<script>
+
+  const PROTOTYPE_CHAIN = `
+      In practice it means assigning to prototypes objects that we created ourselves.
+      `
+
+  // constructor
+  function Figure() {
+    this.name = `geometric figure`
+    // covering global Object to string function
+    this.toString = function() {
+      console.log(this.name);
+    }
+  }
+
+  const figure1 = new Figure()
+  figure1.toString() // geometric figure
+
+  function Figure2d() {
+    this.name = 'figure 2d'
+  }
+
+  function Rect(x, y, sideLength) {
+    this.x = x;
+    this.y = y;
+    this.sideLength = sideLength;
+    this.name = "you have been rect"
+  }
+
+
+  //instead of adding properties to a prototype, we can create an instance of an object with values we want to have access to
+
+  console.log(Figure2d.prototype); // {}
+  console.log(Figure2d.prototype.constructor);     //  ƒ Thing2(name) {
+  // this.name = name;
+  // }
+
+
+
+
+  const figure2dInitialExample = new Figure2d();
+  console.log(figure2dInitialExample.prototype.constructor, `12`);
+
+
+
+  // we want to add some methods to a prototype
+  Figure2d.prototype = new Figure();
+
+  // now we have access to methods from Figure2d via prototype
+  const figure2dExample = new Figure2d();
+
+  figure2dExample.toString() // figure 2d
+
+
+
+  // problem - we have lost the connection to a prototype
+  console.log(figure2dExample.prototype); // undefined
+
+
+
+  // but we can fix it and reconnect
+  figure2dExample.prototype = Figure2d;
+
+  // not it works again
+  console.log(figure2dExample.prototype);
+  // ƒ Figure2d() {
+  // this.name = 'figure 2d'
+  // }
+
+
+  // this includes properties from both Figure2d and Figure as it was already part of Figure constructor
+  Rect.prototype = new Figure2d()
+
+  const rectExample = new Rect(20, 20, 30);
+
+  console.log(rectExample); // Rect {x: 20, y: 20, sideLength: 30, name: 'rect'}
+
+  rectExample.toString() // you have been rect
+
+  Rect.prototype.constructor = Rect
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
