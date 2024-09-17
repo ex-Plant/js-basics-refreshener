@@ -5,17 +5,8 @@ window.onload = function () {
 
 
 
-function onClickDeleteBook(dialog) {
-  // dialog.open = true;
-}
-
-
-
-
 function capitalizeName(author) {
-  const authArr = !author
-    ? []
-    : author.split(" ");
+  const authArr = !author ? [] : author.split(" ");
 
   for (let i = 0; i < authArr.length; i++) {
     let string = authArr[i];
@@ -29,6 +20,7 @@ function capitalizeName(author) {
 
 function capitalizeTitle(title) {
   const firstTitleLetter = title[0];
+
   return(
     firstTitleLetter && firstTitleLetter.toUpperCase() + title.substring(1))
     ?? "Unknown Book title";
@@ -42,10 +34,19 @@ function appendBookLiToBookList(book) {
   const titleCapitalized = capitalizeTitle(title)
 
   newLi.innerHTML = `${titleCapitalized} by ${authorCapitalized}`;
+  newLi.id = book.id;
+  newLi.style.cursor = `pointer`;
+
   bookList.booksUl.appendChild(newLi);
+  newLi.addEventListener("click", () => {
+    bookList.deleteBook(newLi.id)
+    bookList.booksUl.removeChild(newLi);
+  });
+
+  if (bookList.books.length > 0) {
+    bookList.delBtn.style.display = `inline`
+  }
 }
-
-
 
 class Book {
   constructor(author, title) {
@@ -73,9 +74,7 @@ class BookList {
     this.titleInput = document.querySelector(`#title`);
 
     this.addBtn.addEventListener("click", () => this.dialog.open = true);
-    this.delBtn.addEventListener("click", () => onClickDeleteBook(this.dialog));
     this.form.addEventListener("submit", this.handleSubmit)
-
   };
 
   handleSubmit = () => {
@@ -92,8 +91,8 @@ class BookList {
   }
 
 
-  deleteBook = (book) => {
-    this.books = this.books.filter((b) => b.id !== book.id);
+  deleteBook = (id) => {
+    this.books = this.books.filter((b) => b.id !== id);
     storage.saveBooks(this.books);
   };
 }
@@ -117,6 +116,9 @@ class Ui {}
 const storage = new Storage();
 const ui = new Ui();
 const bookList = new BookList();
+
+
+
 
 
 
