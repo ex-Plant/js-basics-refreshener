@@ -30,7 +30,7 @@
           <input id="author" type="text" class="outline" />
           <label for="title">Title</label>
           <input id="title" type="text" class="outline" />
-          <button type='submit'>ok</button>
+          <button  class='disabled:bg-red-500' type='submit'>ok</button>
         </form>
       </dialog>
     </div>
@@ -42,126 +42,6 @@
       </ul>
 
     </section>
-
-    <script>
-
-      window.onload = function () {
-        console.log(`app started!`);
-        bookList.init();
-      };
-
-
-      function onAddABook() {
-        const book = new Book();
-        bookList.dialog.open = true;
-        book.init();
-
-      }
-
-
-      function onDeleteABook(dialog) {
-        dialog.open = true;
-      }
-
-
-      class Book {
-        constructor(title, author) {
-          this.title = undefined;
-          this.author = undefined;
-          this.id = Date.now();
-        }
-
-        init = () => {
-          const form = document.querySelector('form');
-          this.authorInputEl = document.querySelector(`#author`);
-          this.titleInputEl = document.querySelector(`#title`);
-          this.authorInputEl.value = "";
-          this.titleInputEl.value = "";
-
-          this.authorInputEl.addEventListener("change", (e) => {
-            this.author = e.target.value;
-          });
-
-          this.titleInputEl.addEventListener("change", (e) => {
-            this.title = e.target.value;
-          });
-
-          form.addEventListener('submit', this.handleSubmit);
-        }
-
-        handleSubmit = (e) => {
-          e.preventDefault();
-          bookList.dialog.open = false;
-
-          const book = {
-            author: this.authorInputEl.value,
-            title: this.titleInputEl.value,
-            id: this.id
-          }
-
-          bookList.addBook(book)
-          this.titleInputEl.value = "";
-          this.authorInputEl.value = "";
-          this.id = Date.now();
-        };
-      }
-
-      class BookList {
-        constructor() {
-          this.books = [];
-          this.addBtn = undefined;
-          this.delBtn = undefined;
-          this.dialog = undefined;
-
-        }
-
-        init = () => {
-          console.log(`initialized`);
-          this.addBtn = document.getElementById(`addBtn`);
-          this.delBtn = document.getElementById(`delBtn`);
-          this.dialog = document.getElementById(`dialog`);
-          this.booksUl = document.querySelector(`ul.bookList`)
-
-
-          this.addBtn.addEventListener("click", () => onAddABook(this.dialog));
-          this.delBtn.addEventListener("click", () => onDeleteABook(this.dialog));
-        };
-
-        addBook = (book) => {
-          console.log(`Adding book:`, book);
-          this.books = [...this.books, book]
-          console.log(this.books);
-          storage.saveBooks(this.books);
-          const newLi = document.createElement(`li`)
-          newLi.innerHTML = `${book.title} ${book.author}`
-          bookList.booksUl.appendChild(newLi);
-        };
-
-        deleteBook = (book) => {
-          this.books = this.books.filter((b) => b.id !== book.id);
-          storage.saveBooks(this.books);
-        };
-      }
-
-      class Storage {
-        saveBooks = (books) => {
-          console.log(books);
-          localStorage.setItem(`books`, JSON.stringify(books));
-
-        };
-
-        getBooks = () => {
-          const books = localStorage.getItem(`books`);
-          if (!books) return [];
-          return JSON.parse(books) ?? [];
-        };
-      }
-
-      class Ui {}
-      const storage = new Storage();
-      const ui = new Ui();
-      const bookList = new BookList();
-
-    </script>
+  <script src='index.js'></script>
   </body>
 </html>
