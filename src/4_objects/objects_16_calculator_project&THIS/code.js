@@ -31,7 +31,6 @@ const calculator = {
       // el.addEventListener("click", this.buttonClick)
       // el.addEventListener('click', (e) => this.buttonClick(e)); // Use arrow function
       el.addEventListener('click', this.buttonClick.bind(this)); // Bind to calculator
-
     }
   },
 
@@ -55,10 +54,10 @@ const calculator = {
 }
 
 const THIS = `
-  The issue with calling this.addToInput(divHtmlText) within the buttonClick (code.js:35:3-40:4) method is due to the context (this) in which the method is executed. When buttonClick (code.js:35:3-40:4) is called as an event handler, the context (this) refers to the DOM element that triggered the event, not the calculator object.
+  The issue with calling this.addToInput(divHtmlText) within the buttonClick method is due to the context (this) in which the method is executed. When buttonClick is called as an event handler, the context (this) refers to the DOM element that triggered the event, not the calculator object.
 
   Solution 1: Use .bind()
-  You can bind the buttonClick (code.js:35:3-40:4) method to the calculator object so that this inside buttonClick (code.js:35:3-40:4) always refers to the calculator object.
+  You can bind the buttonClick method to the calculator object so that this inside buttonClick (code.js:35:3-40:4) always refers to the calculator object.
 
 `
 const newCalc = {
