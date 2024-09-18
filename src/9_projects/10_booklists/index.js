@@ -3,8 +3,6 @@ window.onload = function () {
   bookList.init();
 };
 
-
-
 function capitalizeName(author) {
   const authArr = !author ? [] : author.split(" ");
 
@@ -15,38 +13,109 @@ function capitalizeName(author) {
     authArr.splice(i, 1, string);
   }
 
+
   return authArr.join(" ") || "Book author";
 }
 
 function capitalizeTitle(title) {
   const firstTitleLetter = title[0];
+  return(firstTitleLetter && firstTitleLetter.toUpperCase() + title.substring(1)) ?? "Unknown Book title";
+}
 
-  return(
-    firstTitleLetter && firstTitleLetter.toUpperCase() + title.substring(1))
-    ?? "Unknown Book title";
+function createListContent (author, title) {
+
+  const authorCapitalized = capitalizeName(author);
+  const titleCapitalized = capitalizeTitle(title)
+
+  return `<div class='book_list_item grid grid-cols-12 w-full divide-y items-center'>
+          <span class='book_list_item_name col-span-3'>${authorCapitalized}</span>
+          <span class='book_list_item_title col-span-3'>${titleCapitalized}</span>
+          <button class=' book_list_item_delete col-span-2'>-</button>
+          <button class='book_list_item_up col-span-2'>+1</button>
+          <button class='book_list_item_down col-span-2'>-1</button>
+        </div>`
+}
+
+
+function moveUp(li, books) {
+  console.log('move up');
+
+  const searchedItemIndex = books.findIndex(book => book.id === Number(li.id))
+  const searchedItem =  books[searchedItemIndex]
+  const previousItem = books[searchedItemIndex -1 ];
+  const firstItem = searchedItemIndex === 0;
+
+  if (firstItem) {
+   alert(`this is as high as it gets!`)
+    return
+  }
+
+  // start at search item - 1 remove two, insert searched and previous
+  books.splice(searchedItemIndex - 1, 2, searchedItem, previousItem )
+  const liElements = document.querySelectorAll(`ul.bookList div.book_list_item`)
+  liElements.forEach(li => li.remove() )
+  books.forEach((book) => {
+    appendBookLiToBookList(book)
+  })
+  storage.saveBooks(books)
+}
+
+
+function moveDown(li, books) {
+  console.log('move down');
+
+  const searchedItemIndex = books.findIndex(book => book.id === Number(li.id))
+  const searchedItem =  books[searchedItemIndex];
+  const nextItem = books[searchedItemIndex  + 1 ];
+  const lastItem = searchedItemIndex >= books.length - 1
+
+  if (lastItem) {
+    alert(`this is as low as it gets!`)
+    return
+  }
+
+  // start at search item remove two, insert next and searched
+  books.splice(searchedItemIndex, 2, nextItem, searchedItem )
+
+  const liElements = document.querySelectorAll(`ul.bookList div.book_list_item`)
+  liElements.forEach(li => li.remove() )
+
+  books.forEach((book) => {
+    appendBookLiToBookList(book)
+  })
+  storage.saveBooks(books)
+
 }
 
 function appendBookLiToBookList(book) {
   const { title, author } = book;
 
   const newLi = document.createElement(`li`);
-  const authorCapitalized = capitalizeName(author);
-  const titleCapitalized = capitalizeTitle(title)
-
-  newLi.innerHTML = `${titleCapitalized} by ${authorCapitalized}`;
+  newLi.innerHTML  = createListContent(author, title);
   newLi.id = book.id;
   newLi.style.cursor = `pointer`;
-
   bookList.booksUl.appendChild(newLi);
-  newLi.addEventListener("click", () => {
+
+  const upBtn = newLi.querySelector('.book_list_item_up');
+  upBtn.addEventListener('click', () => {
+    moveUp(newLi, bookList.books)
+  });
+
+  const downBtn = newLi.querySelector('.book_list_item_down');
+  downBtn.addEventListener('click', () => {
+    moveDown(newLi, bookList.books)
+  });
+
+  const deleteBtn = newLi.querySelector('.book_list_item_delete');
+  deleteBtn.addEventListener('click', () => {
     bookList.deleteBook(newLi.id)
     bookList.booksUl.removeChild(newLi);
   });
-
-  if (bookList.books.length > 0) {
-    bookList.delBtn.style.display = `inline`
-  }
 }
+
+
+
+
 
 class Book {
   constructor(author, title) {
@@ -73,9 +142,18 @@ class BookList {
     this.authorInput = document.querySelector(`#author`);
     this.titleInput = document.querySelector(`#title`);
 
+    this.books = storage.getBooks()
+    this.books.forEach((book) => {
+      appendBookLiToBookList(book)
+    })
+
     this.addBtn.addEventListener("click", () => this.dialog.open = true);
     this.form.addEventListener("submit", this.handleSubmit)
+    console.log(bookList.books);
+
+
   };
+
 
   handleSubmit = () => {
     const book = new Book(this.authorInput.value, this.titleInput.value);
@@ -83,6 +161,7 @@ class BookList {
     this.books = [...this.books, book];
     storage.saveBooks(this.books);
     appendBookLiToBookList(book)
+
     bookList.dialog.open = false;
 
     this.titleInput.value = "";
@@ -92,13 +171,10 @@ class BookList {
 
 
   deleteBook = (id) => {
-    this.books = this.books.filter((b) => b.id !== id);
+    this.books = this.books.filter((b) => b.id !== Number(id));
     storage.saveBooks(this.books);
   };
 }
-
-
-
 
 class Storage {
   saveBooks = (books) => {
@@ -112,194 +188,5 @@ class Storage {
   };
 }
 
-class Ui {}
 const storage = new Storage();
-const ui = new Ui();
 const bookList = new BookList();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-//
-// window.onload = function () {
-//   console.log(`app started!`);
-//   bookList.init();
-// };
-//
-// function onClickAdd() {
-//   const book = new Book();
-//   bookList.dialog.open = true;
-//   book.init();
-// }
-//
-// function onClickDeleteBook(dialog) {
-//   // dialog.open = true;
-// }
-//
-//
-//
-// class Book {
-//   constructor() {
-//     this.id = Date.now();
-//   }
-//
-//   init = () => {
-//     const form = document.querySelector("form");
-//     this.authorInputEl = document.querySelector(`#author`);
-//     this.titleInputEl = document.querySelector(`#title`);
-//     this.authorInputEl.value = "";
-//     this.titleInputEl.value = "";
-//
-//     // this.authorInputEl.addEventListener("change", (e) => {
-//     //   this.author = e.target.value;
-//     // });
-//
-//     // this.titleInputEl.addEventListener("change", (e) => {
-//     // this.title = e.target.value;
-//     // });
-//
-//     form.addEventListener("submit",  this.handleSubmit)
-//   };
-//
-//   handleSubmit = (e) => {
-//     e.preventDefault()
-//     console.log(`onAddABook`);
-//     const book = {
-//       author: this.authorInputEl.value,
-//       title: this.titleInputEl.value,
-//       id: this.id,
-//     };
-//
-//     bookList.addBook(book);
-//
-//     this.titleInputEl.value = "";
-//     this.authorInputEl.value = "";
-//     this.id = Date.now();
-//
-//     bookList.dialog.open = false;
-//   }
-// }
-//
-// function capitalizeName(author) {
-//   const authArr = !author
-//     ? []
-//     : author.split(" ");
-//
-//   for (let i = 0; i < authArr.length; i++) {
-//     let string = authArr[i];
-//     let firstLetter = string[0].toUpperCase();
-//     string = firstLetter + string.substring(1);
-//     authArr.splice(i, 1, string);
-//   }
-//
-//   return authArr.join(" ") || "Book author";
-// }
-//
-// function capitalizeTitle(title) {
-//   const firstTitleLetter = title[0];
-//   return(
-//       firstTitleLetter && firstTitleLetter.toUpperCase() + title.substring(1))
-//     ?? "Book title";
-// }
-//
-// function appendBookLiToBookList(book) {
-//   const { title, author } = book;
-//
-//   const newLi = document.createElement(`li`);
-//   const authorCapitalized = capitalizeName(author);
-//   const titleCapitalized = capitalizeTitle(title)
-//
-//   newLi.innerHTML = `${titleCapitalized} by ${authorCapitalized}`;
-//   bookList.booksUl.appendChild(newLi);
-//
-// }
-//
-//
-//
-// class BookList {
-//   constructor() {
-//     this.books = [];
-//     this.addBtn = undefined;
-//     this.delBtn = undefined;
-//     this.dialog = undefined;
-//   }
-//
-//   init = () => {
-//     console.log(`initialized`);
-//     this.addBtn = document.getElementById(`addBtn`);
-//     this.delBtn = document.getElementById(`delBtn`);
-//     this.dialog = document.getElementById(`dialog`);
-//     this.booksUl = document.querySelector(`ul.bookList`);
-//
-//     this.addBtn.addEventListener("click", () => onClickAdd(this.dialog));
-//     this.delBtn.addEventListener("click", () => onClickDeleteBook(this.dialog));
-//   };
-//
-//   addBook = (book) => {
-//     console.log(`Adding book:`, book);
-//     this.books = [...this.books, book];
-//     console.log(this.books);
-//     storage.saveBooks(this.books);
-//     appendBookLiToBookList(book)
-//
-//   };
-//
-//   deleteBook = (book) => {
-//     this.books = this.books.filter((b) => b.id !== book.id);
-//     storage.saveBooks(this.books);
-//   };
-// }
-//
-//
-//
-//
-// class Storage {
-//   saveBooks = (books) => {
-//     console.log(books);
-//     localStorage.setItem(`books`, JSON.stringify(books));
-//   };
-//
-//   getBooks = () => {
-//     const books = localStorage.getItem(`books`);
-//     if (!books) return [];
-//     return JSON.parse(books) ?? [];
-//   };
-// }
-//
-// class Ui {}
-// const storage = new Storage();
-// const ui = new Ui();
-// const bookList = new BookList();

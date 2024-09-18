@@ -22,18 +22,33 @@
 
 
 
-        <button  popovertarget="my-popover" id="delBtn" class="deleteBook outline rounded px-4 py-2 hidden">
-          delete a book
+        <button  popovertarget="my-popover" id="delBtn" class="deleteBook outline rounded px-4 py-2 ">
+          test popover
         </button>
       </div>
     </div>
 
     <section class='bookList mx-4 flex '>
-      <div class='min-w-[500px] '>
-
+      <div class='min-w-[600px] '>
       <header>My books</header>
-      <ul class='bookList outline min-h-12 min-w-12 mt-4'>
-
+      <ul class='bookList outline min-h-12 min-w-12 mt-4 '>
+        <li class='grid grid-cols-12 w-full divide-y items-center'>
+          <span class='col-span-3'>
+            autor
+          </span>
+          <span class='col-span-3'>
+            tytuł
+          </span>
+          <button class='col-span-2'>
+            delete
+          </button>
+          <button class='col-span-2'>
+            up
+          </button>
+          <button class='col-span-2'>
+            down
+          </button>
+        </li>
       </ul>
       </div>
 
