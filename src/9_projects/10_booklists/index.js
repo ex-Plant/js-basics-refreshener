@@ -114,9 +114,6 @@ function appendBookLiToBookList(book) {
 }
 
 
-
-
-
 class Book {
   constructor(author, title) {
     this.id = Date.now();
