@@ -1,5 +1,5 @@
 # Ignore artifacts:
 build
 coverage
-/src/9_projects/10_booklists/bookList.html
-/src/9_projects/10_booklists/index.js
+/src/9_projects/3_booklists/bookList.html
+/src/9_projects/3_booklists/index.js

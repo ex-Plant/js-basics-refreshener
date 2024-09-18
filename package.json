@@ -3,6 +3,7 @@
     "build": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch"
   },
   "devDependencies": {
+    "nodemon": "^3.1.5",
     "prettier": "3.3.3",
     "tailwindcss": "^3.4.11"
   },
