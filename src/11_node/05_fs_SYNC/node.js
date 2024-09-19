@@ -21,55 +21,103 @@ function createNewDir(path) {
       console.error(err);
       return;
     }
-    console.log(`dir created`);
+    console.log(`dir created: `, path);
   });
 }
 
 // synchronous CHECK IF DIRECTORY EXISTS
-// const dirPath = currentDir + `/test4`;
-// if (fs.existsSync(dirPath)) {
-//   console.log(`directory exists!`);
-// } else {
-//   createNewDir(dirPath);
-// }
+function createDirIfDoesNotExist(dirPath) {
+  if (fs.existsSync(dirPath)) {
+    console.log(`directory already exists!`);
+  } else {
+    createNewDir(dirPath);
+  }
+}
 
-// alternative - this works the other way around, error means there is no
-// directory
-function testAccess(path) {
-  fs.access(path, (err) => {
+// alternative to existsSync - this works the other way around, error means
+// there is no directory
+function createDirAccessCheck(dirPath) {
+  fs.access(dirPath, (err) => {
     if (err) {
-      createNewDir(path);
+      createNewDir(dirPath);
     } else {
-      console.log("The directory or file exists.");
+      console.log("The directory or file already exists.");
     }
   });
 }
 
-// writeFileSync
-const path2 = currentDir + `/test5`;
-testAccess(path2);
+function writeFile(filePath, content) {
+  try {
+    fs.writeFileSync(filePath, content);
+    console.log(`file created!`);
+  } catch (err) {
+    console.log(`error writing file: `, err);
+  }
+}
 
-// const newDirPath = path.join(process.cwd(), "test3");
+function createNewFile(dirPath, fileName, content) {
+  const filePath = path.join(dirPath, fileName);
 
-// const filePath = path.join(newDirPath, "testFile.txt");
-
-// if (fs.existsSync(newDirPath)) {
-//   fs.writeFileSync(filePath, `askldjfanksdjfnalksjd`);
-// } else {
-//   console.log(`directory does not exist`);
-//   console.log(`creating dir...`);
-//   fs.mkdir(newDirPath, (err) => {
-//     if (err) {
-//       console.error(`error creating dir...`);
-//       return;
-//     }
-//     console.log(`directory created!`);
-//     fs.writeFileSync(filePath, `askldjfanksdjfnalksjd`);
-//   });
-// }
+  // check if dir exist
+  if (fs.existsSync(dirPath)) {
+    // write file
+    writeFile(filePath, content);
+  } else {
+    console.log(`directory does not exist, creating new ...`, dirPath);
+    createNewDir(dirPath);
+    writeFile(filePath, content);
+  }
+}
 
 // WHAT HAPPENS IF NO DIRECTORY
 // fs.writeFileSync(
 //   path.join(process.cwd(), "directory_that_does_not_exist/", "testsssss.txt"),
 //   `some text here `,
 // ); // Error: ENOENT: no such file or directory,
+
+// ONLY FOR FILES!!
+function removeFile(path) {
+  try {
+    fs.unlinkSync(path);
+    console.log(path, `deleted!`);
+  } catch (err) {
+    console.error(`Error deleting file`, err);
+  }
+}
+
+function removeDir(pathToDir) {
+  fs.stat(pathToDir, (err, stats) => {
+    if (err) {
+      return console.error("Error getting stats:", err);
+    }
+
+    if (stats.isFile()) {
+      console.error(
+        `Error while removing directory - it is a file not a directory!`,
+      );
+      return;
+    }
+
+    if (stats.isDirectory()) {
+      fs.rmdir(pathToDir, (err) => {
+        if (err) {
+          console.error(`error while deleting file`, err);
+          return;
+        }
+        console.log(`directory deleted successfully`);
+      });
+    }
+  });
+}
+
+const dirPath = currentDir + `/test5`;
+const filePath = path.join(dirPath, "testFile.txt");
+// createDirAccessCheck();
+// createDirIfDoesNotExist()
+// createNewFile(dirPath, `test.txt`, `random string`);
+// removeFile()
+// const fileToBeRemoved = path.join(process.cwd(), "test3", "testFile.txt");
+// removeFile(fileToBeRemoved);
+// const dir = path.join(process.cwd(), "test3");
+//
+// removeDir(dir);
