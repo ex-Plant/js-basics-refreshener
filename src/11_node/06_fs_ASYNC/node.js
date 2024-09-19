@@ -1,4 +1,4 @@
-const fs = require(`fs`).promises;
+const fs = require(`fs`);
 const path = require(`path`);
 
 const BASIC_ASYNC_FS_METHODS = `
@@ -28,12 +28,11 @@ function mkDir(path) {
     console.log(`dir created!`);
   });
 }
-
 // const myPath = path.join(cwd, "test");
 // mkDir(myPath);
 
 //2.
-const WRITE_FILE = `fs.writeFile(file, data, options, callback)`;
+const WRITE_FILE = `fs.writeFile(file, data, options)`;
 
 function writeFile(fileName, content) {
   fs.writeFile(fileName, content, "utf-8", (err) => {
