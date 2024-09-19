@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "scripts": {
     "build": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch"
   },
@@ -8,6 +9,7 @@
     "tailwindcss": "^3.4.11"
   },
   "dependencies": {
+    "formidable": "^3.5.1",
     "postcss-cli": "^11.0.0"
   }
 }

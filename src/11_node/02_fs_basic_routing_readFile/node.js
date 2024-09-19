@@ -1,16 +1,20 @@
 const http = require("http");
-const url = require("url");
 const fs = require("fs");
+const url = require("url");
 
 const server = http.createServer((req, res) => {
-  // console.log("server started");
+  console.log("server started");
   res.writeHead(200, {
     "Content-type": "text/html",
   });
+  console.log(req.url);
 
-  const urlPath = "." + url.parse(req.url, true).pathname;
+  // const urlPath = "." + url.parse(req.url, true).pathname;
+  console.log(req.url);
 
-  fs.readFile(urlPath, (err, data) => {
+  // to read index.html go to localhost:8000/index.html
+  // to read hi-mark.html go to localhost:8000/hi-marc.html
+  fs.readFile("." + req.url, (err, data) => {
     if (err) {
       res.writeHead(404, {
         "Content-type": "text/html",
