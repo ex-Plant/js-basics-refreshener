@@ -24,6 +24,10 @@
 
 -  cd .. && ls- 
 
+# Rename a file or directory
+- mv oldFileName NewFileName
+
+
 
 # Relative vs. Absolute Paths
 # Absolute Path:

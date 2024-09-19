@@ -16,6 +16,7 @@ const BASIC_ASYNC_FS_METHODS = `
 - stat
 - access
 - rm
+- rename
 `;
 
 const cwd = process.cwd();
@@ -132,8 +133,33 @@ async function remove(path) {
   }
 }
 
+//1.
+const RENAME = `fs.rename(path, options, callback)`;
+
+async function rename(oldPath, newPath) {
+  try {
+    await fs.rename(oldPath, newPath);
+    console.log("File renamed successfully! New file name:", newPath);
+  } catch (err) {
+    console.log(`Error while renaming the file: `, err);
+  }
+}
+
 const writeFileName = path.join(cwd, "test", "writeFileTest.txt");
 const myPath = path.join(cwd, "test");
+
+const newFile = path.join(cwd, `test.txt`);
+try {
+  await fs.writeFile(newFile, "test content", "utf-8");
+  console.log(`file written`);
+  const data = await fs.readFile(newFile, "utf-8");
+  console.log(`reading file: `, data);
+} catch (err) {
+  console.log(`something went wrong: `, err);
+}
+
+await rename(newFile, `newShinyFile.txt`);
+
 // await mkDir(path.join(cwd, `test1`));
 // await writeFile(writeFileName, "some content");
 // await appendToFile(writeFileName, "some additional content");
