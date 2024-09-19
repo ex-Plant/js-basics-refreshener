@@ -28,7 +28,6 @@
 - mv oldFileName NewFileName
 
 
-
 # Relative vs. Absolute Paths
 # Absolute Path:
 - Specifies the full path from the root of the file system.

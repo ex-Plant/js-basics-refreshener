@@ -38,7 +38,7 @@ const server = http.createServer(async (req, res) => {
       // creating new directory
       const uploadDir = `./uploads`;
 
-      await fs.mkdir(uploadDir, { recursive: true }, (err, path) => {
+      await fs.mkdir(uploadDir, { recursive: true }, (err) => {
         console.error("Error parsing the form:", err);
         if (!res.headersSent) {
           res.writeHead(err.httpCode || 400, { "Content-Type": "text/plain" });

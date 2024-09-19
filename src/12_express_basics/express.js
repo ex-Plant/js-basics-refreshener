@@ -1,9 +1,9 @@
-const http = require(`http`);
 const express = require(`express`);
 
 const app = express();
 
 app.get("/", (req, res) => {
+  console.log(req.url);
   res.status(200).send(`hello world`);
 });
 
