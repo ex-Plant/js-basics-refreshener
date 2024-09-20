@@ -28,29 +28,18 @@
 - mv oldFileName NewFileName
 
 
-# Relative vs. Absolute Paths
-# Absolute Path:
-- Specifies the full path from the root of the file system.
-- cd /Users/username/projects
-
-# Relative Path:
-- Relative Path: Specifies the path relative to the current working directo
-- cd projects/new_project
-
-
-
 # Create a directory named "newdir" in the current directory
-mkdir newdir
+- mkdir newdir
 
 # Create a directory named "subdir" inside "newdir"
-mkdir newdir/subdir
+- mkdir newdir/subdir
 
 
 # Create a file named "file.txt" in the current directory
-touch file.txt
+- touch file.txt
 
 # Create a file named "file.txt" inside "newdir"
-touch newdir
+- touch newdir
 
 - pwd - print current dir
 
@@ -65,3 +54,19 @@ touch newdir
 "recurse" or "recursive" means that the operation should be applied to all files and subdirectories within a directory
 
 - rmdir -r path/to/dir
+
+
+# Relative vs. Absolute Paths
+# Absolute Path:
+- Specifies the full path from the root of the file system.
+- cd /Users/username/projects
+
+# Relative Path:
+- Relative Path: Specifies the path relative to the current working directo
+- cd projects/new_project
+
+# Executing node code straight from cli
+- node --eval "code to be executed"
+
+# Example of creating prettierignore file 
+- node --eval "fs.writeFileSync('.prettierignore','# Ignore artifacts:\nbuild\ncoverage\n')"
