@@ -14,6 +14,9 @@ Improved User Experience: In front-end applications, asynchronous operations (li
 const currentDir = process.cwd();
 const CWD = `current working directory`;
 
+console.log(currentDir);
+// console.log(__dirname); // in commonjs
+
 // create new catalogue
 function createNewDir(path) {
   fs.mkdir(path, (err) => {
