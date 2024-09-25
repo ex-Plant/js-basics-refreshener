@@ -29,6 +29,7 @@ const server = http.createServer(async (req, res) => {
     }
 
     if (req.url === "/") {
+      // load html
       res.setHeader("Content-type", "text/html");
       const data = await fs.readFile(path.join(process.cwd(), `index.html`));
       res.status = 200;
